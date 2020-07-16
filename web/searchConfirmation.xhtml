@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Pending Attractions</title>
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="refresh"/>
+        
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+        <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet"></link>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"></link>
+        <link href="tripadvisor.css" rel="stylesheet"></link>
+    </h:head>
+    <h:body styleClass="search-attraction-area">
+            <h:form>
+                <section class="">
+                <div class="">
+                    <div class="header-top-right no-padding">
+                        <a class="btns" href="mailto:support@tripadvisor.com">support@tripadvisor.com</a>
+                        <h:link outcome="welcomeUser.xhtml">User Home</h:link>
+                        <h:link outcome="#{login.signOut()}">Sign Out</h:link>
+                    </div>
+                    <div class="col-md-4 mx-auto align-center">
+                            <h1>
+                                <div class="mx-auto"><a href="index.html"><img src="logo.png" alt="" title="" /></a></div>
+                            </h1>
+                    </div>
+                    
+                </div>
+            </section><br></br><br></br>
+            <div class="align-center"><h1>Attraction Names</h1></div>
+            <center>
+                <h:dataTable value="#{login.acct.attractionNames}" var="attr" border="3" style = "border-color: white;">
+                    <h:column>
+                        <f:facet name="header">&nbsp;&nbsp;Attraction Name&nbsp;&nbsp;</f:facet>
+                        <strong><h:outputText id="attrName"  value="#{attr}"></h:outputText></strong>
+                    </h:column>
+                    <h:column>
+    			<f:facet name="header">&nbsp;&nbsp;&nbsp;&nbsp;Search Attraction&nbsp;&nbsp;&nbsp;&nbsp;</f:facet>
+                        <div class="align-center"><h:commandButton value="Search Attraction"
+                                         action="#{login.acct.SearchAttractionNameConfirm(attr)}" class="search-attraction-display"/></div>
+                    </h:column>
+                </h:dataTable>
+            </center>
+            <div class="search-body-area"></div>
+            <div>
+                <h4>Would you like to return back to the User Home page?</h4>
+                <h:commandButton id="submit1" value="Return" class="btn-submit-search"
+                action="welcomeUser.xhtml" />
+            </div><br></br>
+        </h:form>
+        <!-- start footer Area -->		
+        <h:form>
+            <footer class="footer-area">
+		<div class="container">
+                    <div class="row">
+			<div class="col-lg-5 col-md-6 col-sm-6">
+                            <div class="single-footer-widget">
+				<h6>Explore</h6>
+                                    <p class="footer-text">
+					Trip Advisor continues to provide services to our customers with features like create attraction, search attraction and save favourites.
+                                    </p>
+                                    <p class="footer-text">
+                                        <script>document.write(new Date().getFullYear());</script> By choosing sustainable destinations, we have the power to promote sustainable initiatives for the betterment of the entire world.
+                                    </p>								
+                            </div>
+			</div>
+			<div class="col-lg-5  col-md-6 col-sm-6">
+                            <div class="single-footer-widget">
+				<h6>Newsletter</h6>
+                                    <p class="footer-text">Stay update with our latest</p>
+					<div class="" id="mc_embed_signup">
+                                            <h:inputText id="txt"></h:inputText>
+                                        </div>
+                            </div>
+			</div>						
+			<div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+                            <div class="single-footer-widget">
+				<h6>Follow Us</h6>
+                                <p class="footer-text">Let us be social</p>
+				<div class="footer-social d-flex align-items-center">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                                    <a href="#"><i class="fa fa-behance"></i></a>
+				</div>
+                            </div>
+			</div>							
+                    </div>
+		</div>
+            </footer>
+        </h:form>
+        <!--End Footer Area-->
+    </h:body>
+</html>
+

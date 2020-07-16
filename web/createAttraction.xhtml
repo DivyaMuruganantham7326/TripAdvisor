@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Create Attraction</title>
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="refresh"/>
+        
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet"></link>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"></link>
+        <link href="tripadvisor.css" rel="stylesheet"></link>
+    </h:head>
+    <h:body styleClass="create-attraction-area">
+        <h:form>
+             <section class="">
+                <div class="">
+                    <div class="header-top-right no-padding">
+                        <a class="btns" href="mailto:support@tripadvisor.com">support@tripadvisor.com</a>
+                        <h:link outcome="welcomeUser.xhtml">User Home</h:link>
+                        <h:link outcome="#{login.signOut()}">Sign Out</h:link>
+                    </div>
+                    <div class="col-md-4 mx-auto">
+                            <h6 class="text-uppercase"><strong>Make memories with Trip Advisor</strong></h6>
+                            <h1>
+                                <div class="mx-auto"><a href="index.html"><img src="img\logo2.png" alt="" title="" /></a></div>
+                            </h1>
+                            <p class="mx-auto">
+                                Explore the world with just one click. 
+                            </p>
+                    </div>       
+                </div>
+             </section>&nbsp;
+            <h3>Create a new attraction!</h3>
+            <div class="container">
+                <div class="row">
+            <div class="col-md-4 mx-auto">
+                
+                <p><strong>Enter Attraction Name:</strong><br></br>
+                <h:inputText id="name" required ="true" 
+                             requiredMessage="The name field cannot be empty"
+                        title="Enter Attraction Name"
+                        value="#{login.acct.attraction.attractionName}">  
+                </h:inputText>
+            </p>
+            
+                <p><strong>Enter Attraction Description:</strong><br></br>
+                <h:inputText id="userid" required ="true" 
+                             requiredMessage="The ID field cannot be empty"
+                        title="Enter Attraction Description"
+                        value="#{login.acct.attraction.attractionDesc}">
+                </h:inputText>
+            </p>
+            
+                <p><strong>Enter State:</strong><br></br>
+                <h:inputText id="state" required ="true" 
+                             requiredMessage="The ID field cannot be empty"
+                        title="Enter Attraction State"
+                        value="#{login.acct.attraction.state}">
+                </h:inputText>
+            </p>
+            
+            <p><strong>Enter City:</strong><br></br>
+                <h:inputText id="city" required ="true" 
+                             requiredMessage="The ID field cannot be empty"
+                        title="Enter Attraction City"
+                        value="#{login.acct.attraction.city}">
+                </h:inputText>
+            </p>
+            
+            <p><strong>Select Tag:</strong><br></br>
+                <h:selectOneMenu value="#{login.acct.attraction.tag}">
+                    <f:selectItem itemValue=" " itemLabel="Select" />
+                    <f:selectItem itemValue="History Buff" itemLabel="History Buff" />
+                    <f:selectItem itemValue="Shopping Fanatic" itemLabel="Shopping Fanatic" />
+                    <f:selectItem itemValue="Beach Goer" itemLabel="Beach Goer" />
+                    <f:selectItem itemValue="Urban Explorer" itemLabel="Urban Explorer" />
+                    <f:selectItem itemValue="Nature Lover" itemLabel="Nature Lover" />
+                    <f:selectItem itemValue="Family Vacationer" itemLabel="Family Vacationer" />
+                </h:selectOneMenu>
+            </p>
+            <p>
+                <h:commandButton id="submit" value="Submit"
+                                 action="attractionConfirmation" class="create-attraction-btn btn-submit-create-attraction" />
+            </p>
+            </div>  </div></div>   
+        </h:form>
+    </h:body>
+</html>
+

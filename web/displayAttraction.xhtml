@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Attraction</title>
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="refresh"/>
+        
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+        <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet"></link>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"></link>
+        <link href="tripadvisor.css" rel="stylesheet"></link>
+    </h:head>
+    <h:body styleClass="display-attraction-area">
+        <h:form>
+            <section class="">
+                <div class="">
+                    <div class="header-top-right no-padding">
+
+                        <a class="btns" href="mailto:support@tripadvisor.com">support@tripadvisor.com</a>
+                        <h:link outcome="welcomeUser.xhtml">User Home</h:link>
+                        <h:link outcome="#{login.signOut()}">Sign Out</h:link>
+                    </div>
+                    <div class="col-md-4 mx-auto align-center">
+                            <h1>
+                                <div class="mx-auto"><a href="index.html"><img src="logo.png" alt="" title="" /></a></div>
+                            </h1>
+                    </div>           
+                </div>
+            </section>
+            <h3>Attraction</h3>
+            <h:dataTable value="#{login.acct.GetAttractionDetails()}" var="attr" border="3" style = "border-color: white;">
+                    <h:column>
+                        <f:facet name="header">Attraction  Name</f:facet>
+                        <h:outputText id="attrName"  value="#{attr.attractionName}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Attraction Description</f:facet>
+                        <h:outputText id="attrDesc"  value="#{attr.attractionDesc}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">State</f:facet>
+                        <h:outputText id="attrState"  value="#{attr.state}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                         <f:facet name="header" >City</f:facet>
+                         <h:outputText id="attrCity"  value="#{attr.city}"></h:outputText>
+                    </h:column>
+                     <h:column>
+                         <f:facet name="header" >Average Score</f:facet>
+                         <h:outputText id="attrScores"  value="#{attr.scores}"></h:outputText>
+                    </h:column>
+            </h:dataTable>
+            <br></br>
+            <h3>Reviews</h3>
+            <h:dataTable value="#{login.acct.DisplayReviews()}" var="reviews" border="3" style = "border-color: white;">
+                            <h:column>
+                                <f:facet name="header">Date</f:facet>
+                                <h:outputText id="reviewDate"  value="#{reviews.datetime}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Scores</f:facet>
+                                <h:outputText id="reviewDesc"  value="#{reviews.scores}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Comments</f:facet>
+                                <h:outputText id="reviewComments"  value="#{reviews.comments}"></h:outputText>
+                            </h:column>
+            </h:dataTable>
+            <br></br>
+            <h3>Create Reviews</h3>
+            <p>Please enter the score: <br></br>
+                <h:inputText id="name"
+                        title="Please enter the score"
+                        value="#{login.acct.review.scores}">
+                         
+                </h:inputText>
+            </p>
+            <p>Please enter the comments: <br></br>
+                <h:inputText id="userid"
+                        title="Please enter your ID"
+                        value="#{login.acct.review.comments}">
+                </h:inputText>
+            </p>
+            <h:commandButton id="submit1" value="Submit" class="search-attraction-display"
+                                 action="#{login.acct.CreateReview(login.acct.review.scores, login.acct.review.comments)}" 
+                                 onclick="alert('Review is created successfully!')"/>
+            <br></br><br></br>
+            <h3>Would you like to add this attraction to your favorites?</h3>
+            <h:commandButton id="favorites" value="Save Favorites" class="search-attraction-display"
+                                          action="saveFavDestConfirmation"/>
+            <br></br><br></br>
+            <h3>Return back to the list?</h3>
+            <h:commandButton id="return" value="Return" class="search-attraction-display"
+                                          action="searchConfirmation.xhtml"/>
+            <br></br><br></br>
+        </h:form>
+        <!-- start footer Area -->		
+        <h:form>
+            <footer class="footer-area">
+		<div class="container">
+                    <div class="row">
+			<div class="col-lg-5 col-md-6 col-sm-6">
+                            <div class="single-footer-widget">
+				<h6>Explore</h6>
+                                    <p class="footer-text">
+					Trip Advisor continues to provide services to our customers with features like create attraction, search attraction and save favourites.
+                                    </p>
+                                    <p class="footer-text">
+                                        <script>document.write(new Date().getFullYear());</script> By choosing sustainable destinations, we have the power to promote sustainable initiatives for the betterment of the entire world.
+                                    </p>								
+                            </div>
+			</div>
+			<div class="col-lg-5  col-md-6 col-sm-6">
+                            <div class="single-footer-widget">
+				<h6>Newsletter</h6>
+                                    <p class="footer-text">Stay update with our latest</p>
+					<div class="" id="mc_embed_signup">
+                                            <h:inputText id="txt"></h:inputText>
+                                        </div>
+                            </div>
+			</div>						
+			<div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+                            <div class="single-footer-widget">
+				<h6>Follow Us</h6>
+                                <p class="footer-text">Let us be social</p>
+				<div class="footer-social d-flex align-items-center">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                                    <a href="#"><i class="fa fa-behance"></i></a>
+				</div>
+                            </div>
+			</div>							
+                    </div>
+		</div>
+            </footer>
+        </h:form>
+        <!--End Footer Area-->
+    </h:body>
+</html>
+

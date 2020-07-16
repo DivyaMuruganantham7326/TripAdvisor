@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Create Review</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p>Please enter the score: <br></br>
+                <h:inputText id="name" required ="true" 
+                             requiredMessage="The name field cannot be empty"
+                        title="Please enter the score"
+                        value="#{login.acct.review.scores}">
+                         
+                </h:inputText>
+            </p>
+            
+            <p>Please enter the comments: <br></br>
+                <h:inputText id="userid" required ="true" 
+                             requiredMessage="The ID field cannot be empty"
+                        title="Please enter your ID"
+                        value="#{login.acct.review.comments}">
+                </h:inputText>
+            </p>
+            <h:commandButton id="submit1" value="Submit" style ="color:#af0109; font-family: Avenir; font-size:17px;background-color:peachpuff"
+                                 action="#{login.acct.CreateReview(login.acct.review.scores, login.acct.review.comments)}" 
+                                 onclick="alert('Review is created successfully!')"/>
+        </h:form>
+    </h:body>
+</html>
+
